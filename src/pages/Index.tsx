@@ -102,13 +102,6 @@ const Index = () => {
         {currentSlide === 0 && (
           <div className="space-y-4 animate-fade-in">
             <Button
-              onClick={() => setShowInstructions(true)}
-              className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-xl py-8 neon-button transition-all"
-            >
-              👑 VIP сигналы
-            </Button>
-
-            <Button
               onClick={() => setShowInfo(true)}
               className="w-full bg-zinc-800 hover:bg-zinc-700 text-primary font-semibold text-lg py-6 border-2 border-primary/30 neon-border transition-all"
             >
@@ -133,6 +126,13 @@ const Index = () => {
 
         {currentSlide === 1 && (
           <div className="space-y-4 animate-fade-in">
+            <Button
+              onClick={() => setShowInstructions(true)}
+              className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-xl py-8 neon-button transition-all"
+            >
+              👑 VIP сигналы
+            </Button>
+
             <Button
               onClick={handleRegister}
               className="w-full bg-gradient-to-r from-primary to-yellow-500 hover:from-yellow-500 hover:to-primary text-black font-bold text-xl py-8 neon-button transition-all"
