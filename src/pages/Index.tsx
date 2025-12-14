@@ -65,12 +65,12 @@ const Index = () => {
 
   if (!isAuthorized) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-black to-zinc-900 p-4">
-        <Card className="w-full max-w-md p-8 bg-zinc-900/50 backdrop-blur border-2 border-primary/30 neon-border">
-          <div className="text-center space-y-6">
-            <h1 className="text-5xl font-black text-primary neon-glow mb-8">LUSKY BEAR</h1>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-black to-zinc-900 p-3 sm:p-4">
+        <Card className="w-full max-w-md p-6 sm:p-8 bg-zinc-900/50 backdrop-blur border-2 border-primary/30 neon-border">
+          <div className="text-center space-y-4 sm:space-y-6">
+            <h1 className="text-4xl sm:text-5xl font-black text-primary neon-glow mb-6 sm:mb-8">LUSKY BEAR</h1>
             <div className="space-y-4">
-              <p className="text-lg text-foreground/90">Введите бонус-код для входа</p>
+              <p className="text-base sm:text-lg text-foreground/90">Введите бонус-код для входа</p>
               <Input
                 type="text"
                 value={code}
@@ -81,7 +81,7 @@ const Index = () => {
               />
               <Button
                 onClick={handleCodeSubmit}
-                className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-lg py-6 neon-button"
+                className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-base sm:text-lg py-5 sm:py-6 neon-button"
               >
                 Войти
               </Button>
@@ -93,29 +93,29 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-zinc-900 to-black p-4 flex flex-col items-center justify-center overflow-hidden">
-      <div className="w-full max-w-md space-y-6">
-        <h1 className="text-6xl font-black text-center text-primary neon-glow mb-12">LUSKY BEAR</h1>
+    <div className="min-h-screen bg-gradient-to-b from-black via-zinc-900 to-black p-3 sm:p-4 flex flex-col items-center justify-center overflow-hidden">
+      <div className="w-full max-w-md space-y-4 sm:space-y-6">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-center text-primary neon-glow mb-6 sm:mb-8 md:mb-12">LUSKY BEAR</h1>
         
         {currentSlide === 0 && (
           <div className="space-y-4 animate-fade-in">
             <Button
               onClick={() => setShowInfo(true)}
-              className="w-full bg-zinc-800 hover:bg-zinc-700 text-primary font-semibold text-lg py-6 border-2 border-primary/30 neon-border transition-all"
+              className="w-full bg-zinc-800 hover:bg-zinc-700 text-primary font-semibold text-base sm:text-lg py-5 sm:py-6 border-2 border-primary/30 neon-border transition-all"
             >
               Инструкция
             </Button>
 
             <Button
               onClick={handleSupport}
-              className="w-full bg-zinc-800 hover:bg-zinc-700 text-primary font-semibold text-lg py-6 border-2 border-primary/30 neon-border transition-all"
+              className="w-full bg-zinc-800 hover:bg-zinc-700 text-primary font-semibold text-base sm:text-lg py-5 sm:py-6 border-2 border-primary/30 neon-border transition-all"
             >
               Поддержка
             </Button>
 
             <Button
               onClick={() => setCurrentSlide(1)}
-              className="w-full bg-primary/20 hover:bg-primary/30 text-primary font-semibold text-lg py-6 border-2 border-primary/30 neon-border transition-all mt-8"
+              className="w-full bg-primary/20 hover:bg-primary/30 text-primary font-semibold text-base sm:text-lg py-5 sm:py-6 border-2 border-primary/30 neon-border transition-all mt-4 sm:mt-8"
             >
               Далее →
             </Button>
@@ -123,53 +123,45 @@ const Index = () => {
         )}
 
         {currentSlide === 1 && (
-          <div className="space-y-6 animate-fade-in">
-            <Card className="bg-zinc-900/50 backdrop-blur border-2 border-primary/30 neon-border p-6">
-              <h2 className="text-xl font-bold text-primary neon-glow text-center mb-4">
+          <div className="space-y-4 animate-fade-in">
+            <Card className="bg-zinc-900/50 backdrop-blur border-2 border-primary/30 neon-border p-4 sm:p-6">
+              <h2 className="text-lg sm:text-xl font-bold text-primary neon-glow text-center mb-3 sm:mb-4">
                 ⚡Инструкция для правильной работы⚡
               </h2>
-              <div className="space-y-3 text-foreground/90 text-sm leading-relaxed">
+              <div className="space-y-2 sm:space-y-3 text-foreground/90 text-xs sm:text-sm leading-relaxed">
                 <p className="flex items-start gap-2">
-                  <span>🚀</span>
+                  <span className="text-base sm:text-lg flex-shrink-0">🚀</span>
                   <span><strong>1.</strong> Регистрируем совершенно новый аккаунт.</span>
                 </p>
                 <p className="flex items-start gap-2">
-                  <span>🔥</span>
+                  <span className="text-base sm:text-lg flex-shrink-0">🔥</span>
                   <span><strong>2.</strong> Вам дают бесплатный бонус виде 50 рублей, и вводим по желанию сверху промокод.</span>
                 </p>
                 <p className="flex items-start gap-2">
-                  <span>👑</span>
+                  <span className="text-base sm:text-lg flex-shrink-0">👑</span>
                   <span><strong>3.</strong> Дальше пополняем баланс на любую сумму при желании, можно играть и на бонус но в этом случае казино будет вас сливать.</span>
                 </p>
                 <p className="flex items-start gap-2">
-                  <span>🌟</span>
+                  <span className="text-base sm:text-lg flex-shrink-0">🌟</span>
                   <span><strong>4.</strong> Заходим в игру Tower Rush и ставим 2 раза ставку это нужно чтобы казино увидел что вы не бот.</span>
                 </p>
                 <p className="flex items-start gap-2">
-                  <span>🎰</span>
+                  <span className="text-base sm:text-lg flex-shrink-0">🎰</span>
                   <span><strong>5.</strong> Дальше заходим в игру CRASH X и нажимаем получить VIP сигнал👑</span>
                 </p>
               </div>
             </Card>
 
             <Button
-              onClick={handleRegister}
-              className="w-full bg-gradient-to-r from-primary to-yellow-500 hover:from-yellow-500 hover:to-primary text-black font-bold text-xl py-8 neon-button transition-all"
+              onClick={() => setCurrentSlide(2)}
+              className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-lg sm:text-xl py-6 sm:py-8 neon-button transition-all"
             >
-              Зарегистрироваться
-            </Button>
-
-            <Button
-              onClick={handleGetSignal}
-              disabled={!canGetSignal}
-              className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-xl py-8 neon-button transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {canGetSignal ? '👑 Получить VIP сигнал' : `Ожидание ${countdown}с`}
+              К сигналам 👑
             </Button>
 
             <Button
               onClick={() => setCurrentSlide(0)}
-              className="w-full bg-zinc-800/50 hover:bg-zinc-700/50 text-primary/70 font-semibold text-lg py-6 border-2 border-primary/20 transition-all mt-8"
+              className="w-full bg-zinc-800/50 hover:bg-zinc-700/50 text-primary/70 font-semibold text-base sm:text-lg py-5 sm:py-6 border-2 border-primary/20 transition-all"
             >
               ← Назад
             </Button>
@@ -177,22 +169,37 @@ const Index = () => {
         )}
 
         {currentSlide === 2 && (
-          <div className="space-y-6 animate-fade-in">
-            <Card className="bg-zinc-900/50 backdrop-blur border-2 border-primary/30 neon-border p-8">
-              <h2 className="text-2xl font-bold text-primary neon-glow text-center mb-6">
+          <div className="space-y-4 animate-fade-in">
+            <Card className="bg-zinc-900/50 backdrop-blur border-2 border-primary/30 neon-border p-6 sm:p-8">
+              <h2 className="text-xl sm:text-2xl font-bold text-primary neon-glow text-center mb-4 sm:mb-6">
                 👑 VIP Сигнал
               </h2>
-              <div className="py-8 text-center">
-                <div className="text-8xl font-black text-primary neon-glow animate-pulse">
+              <div className="py-6 sm:py-8 text-center">
+                <div className="text-6xl sm:text-7xl md:text-8xl font-black text-primary neon-glow animate-pulse">
                   {coefficient}x
                 </div>
-                <p className="mt-6 text-foreground/70 text-lg">Используйте этот коэффициент в игре CRASH X</p>
+                <p className="mt-4 sm:mt-6 text-foreground/70 text-base sm:text-lg">Используйте этот коэффициент в игре CRASH X</p>
               </div>
             </Card>
 
             <Button
+              onClick={handleRegister}
+              className="w-full bg-gradient-to-r from-primary to-yellow-500 hover:from-yellow-500 hover:to-primary text-black font-bold text-lg sm:text-xl py-6 sm:py-8 neon-button transition-all"
+            >
+              Зарегистрироваться
+            </Button>
+
+            <Button
+              onClick={handleGetSignal}
+              disabled={!canGetSignal}
+              className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-lg sm:text-xl py-6 sm:py-8 neon-button transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {canGetSignal ? '👑 Получить VIP сигнал' : `Ожидание ${countdown}с`}
+            </Button>
+
+            <Button
               onClick={() => setCurrentSlide(1)}
-              className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-xl py-8 neon-button transition-all"
+              className="w-full bg-zinc-800/50 hover:bg-zinc-700/50 text-primary/70 font-semibold text-base sm:text-lg py-5 sm:py-6 border-2 border-primary/20 transition-all"
             >
               ← Вернуться
             </Button>
