@@ -15,6 +15,7 @@ const Index = () => {
   const [coefficient, setCoefficient] = useState('');
   const [canGetSignal, setCanGetSignal] = useState(true);
   const [countdown, setCountdown] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     if (countdown > 0) {
@@ -94,47 +95,67 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-zinc-900 to-black p-4 flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-b from-black via-zinc-900 to-black p-4 flex flex-col items-center justify-center overflow-hidden">
       <div className="w-full max-w-md space-y-6">
         <h1 className="text-6xl font-black text-center text-primary neon-glow mb-12">LUSKY BEAR</h1>
         
-        <div className="space-y-4">
-          <Button
-            onClick={() => setShowInstructions(true)}
-            className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-xl py-8 neon-button transition-all"
-          >
-            👑 VIP сигналы
-          </Button>
+        {currentSlide === 0 && (
+          <div className="space-y-4 animate-fade-in">
+            <Button
+              onClick={() => setShowInstructions(true)}
+              className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-xl py-8 neon-button transition-all"
+            >
+              👑 VIP сигналы
+            </Button>
 
-          <Button
-            onClick={() => setShowInfo(true)}
-            className="w-full bg-zinc-800 hover:bg-zinc-700 text-primary font-semibold text-lg py-6 border-2 border-primary/30 neon-border transition-all"
-          >
-            Инструкция
-          </Button>
+            <Button
+              onClick={() => setShowInfo(true)}
+              className="w-full bg-zinc-800 hover:bg-zinc-700 text-primary font-semibold text-lg py-6 border-2 border-primary/30 neon-border transition-all"
+            >
+              Инструкция
+            </Button>
 
-          <Button
-            onClick={handleSupport}
-            className="w-full bg-zinc-800 hover:bg-zinc-700 text-primary font-semibold text-lg py-6 border-2 border-primary/30 neon-border transition-all"
-          >
-            Поддержка
-          </Button>
+            <Button
+              onClick={handleSupport}
+              className="w-full bg-zinc-800 hover:bg-zinc-700 text-primary font-semibold text-lg py-6 border-2 border-primary/30 neon-border transition-all"
+            >
+              Поддержка
+            </Button>
 
-          <Button
-            onClick={handleRegister}
-            className="w-full bg-gradient-to-r from-primary to-yellow-500 hover:from-yellow-500 hover:to-primary text-black font-bold text-xl py-8 neon-button transition-all"
-          >
-            Зарегистрироваться
-          </Button>
+            <Button
+              onClick={() => setCurrentSlide(1)}
+              className="w-full bg-primary/20 hover:bg-primary/30 text-primary font-semibold text-lg py-6 border-2 border-primary/30 neon-border transition-all mt-8"
+            >
+              Далее →
+            </Button>
+          </div>
+        )}
 
-          <Button
-            onClick={handleGetSignal}
-            disabled={!canGetSignal}
-            className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-xl py-8 neon-button transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {canGetSignal ? '👑 Получить VIP сигнал' : `Ожидание ${countdown}с`}
-          </Button>
-        </div>
+        {currentSlide === 1 && (
+          <div className="space-y-4 animate-fade-in">
+            <Button
+              onClick={handleRegister}
+              className="w-full bg-gradient-to-r from-primary to-yellow-500 hover:from-yellow-500 hover:to-primary text-black font-bold text-xl py-8 neon-button transition-all"
+            >
+              Зарегистрироваться
+            </Button>
+
+            <Button
+              onClick={handleGetSignal}
+              disabled={!canGetSignal}
+              className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-xl py-8 neon-button transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {canGetSignal ? '👑 Получить VIP сигнал' : `Ожидание ${countdown}с`}
+            </Button>
+
+            <Button
+              onClick={() => setCurrentSlide(0)}
+              className="w-full bg-zinc-800/50 hover:bg-zinc-700/50 text-primary/70 font-semibold text-lg py-6 border-2 border-primary/20 transition-all mt-8"
+            >
+              ← Назад
+            </Button>
+          </div>
+        )}
       </div>
 
       <Dialog open={showInstructions} onOpenChange={setShowInstructions}>

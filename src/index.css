@@ -64,22 +64,22 @@
 @layer utilities {
   .neon-glow {
     text-shadow:
+      0 0 5px hsl(var(--neon-gold-glow)),
       0 0 10px hsl(var(--neon-gold-glow)),
-      0 0 20px hsl(var(--neon-gold-glow)),
-      0 0 30px hsl(var(--neon-gold));
+      0 0 15px hsl(var(--neon-gold));
   }
 
   .neon-border {
     box-shadow:
+      0 0 5px hsl(var(--neon-gold)),
       0 0 10px hsl(var(--neon-gold)),
-      0 0 20px hsl(var(--neon-gold)),
-      inset 0 0 10px hsl(var(--neon-gold));
+      inset 0 0 5px hsl(var(--neon-gold));
   }
 
   .neon-button {
     box-shadow:
+      0 0 8px hsl(var(--neon-gold)),
       0 0 15px hsl(var(--neon-gold)),
-      0 0 30px hsl(var(--neon-gold)),
-      0 0 45px hsl(var(--neon-gold));
+      0 0 20px hsl(var(--neon-gold));
   }
 }
