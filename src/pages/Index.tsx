@@ -9,9 +9,7 @@ const CORRECT_CODE = 'CFGERL5S';
 const Index = () => {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [code, setCode] = useState('');
-  const [showInstructions, setShowInstructions] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
-  const [showSignal, setShowSignal] = useState(false);
   const [coefficient, setCoefficient] = useState('');
   const [canGetSignal, setCanGetSignal] = useState(true);
   const [countdown, setCountdown] = useState(0);
@@ -51,7 +49,7 @@ const Index = () => {
     if (canGetSignal) {
       const newCoef = generateCoefficient();
       setCoefficient(newCoef);
-      setShowSignal(true);
+      setCurrentSlide(2);
       setCanGetSignal(false);
       setCountdown(60);
     }
@@ -125,13 +123,34 @@ const Index = () => {
         )}
 
         {currentSlide === 1 && (
-          <div className="space-y-4 animate-fade-in">
-            <Button
-              onClick={() => setShowInstructions(true)}
-              className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-xl py-8 neon-button transition-all"
-            >
-              👑 VIP сигналы
-            </Button>
+          <div className="space-y-6 animate-fade-in">
+            <Card className="bg-zinc-900/50 backdrop-blur border-2 border-primary/30 neon-border p-6">
+              <h2 className="text-xl font-bold text-primary neon-glow text-center mb-4">
+                ⚡Инструкция для правильной работы⚡
+              </h2>
+              <div className="space-y-3 text-foreground/90 text-sm leading-relaxed">
+                <p className="flex items-start gap-2">
+                  <span>🚀</span>
+                  <span><strong>1.</strong> Регистрируем совершенно новый аккаунт.</span>
+                </p>
+                <p className="flex items-start gap-2">
+                  <span>🔥</span>
+                  <span><strong>2.</strong> Вам дают бесплатный бонус виде 50 рублей, и вводим по желанию сверху промокод.</span>
+                </p>
+                <p className="flex items-start gap-2">
+                  <span>👑</span>
+                  <span><strong>3.</strong> Дальше пополняем баланс на любую сумму при желании, можно играть и на бонус но в этом случае казино будет вас сливать.</span>
+                </p>
+                <p className="flex items-start gap-2">
+                  <span>🌟</span>
+                  <span><strong>4.</strong> Заходим в игру Tower Rush и ставим 2 раза ставку это нужно чтобы казино увидел что вы не бот.</span>
+                </p>
+                <p className="flex items-start gap-2">
+                  <span>🎰</span>
+                  <span><strong>5.</strong> Дальше заходим в игру CRASH X и нажимаем получить VIP сигнал👑</span>
+                </p>
+              </div>
+            </Card>
 
             <Button
               onClick={handleRegister}
@@ -156,39 +175,30 @@ const Index = () => {
             </Button>
           </div>
         )}
-      </div>
 
-      <Dialog open={showInstructions} onOpenChange={setShowInstructions}>
-        <DialogContent className="bg-zinc-900 border-2 border-primary/50 text-foreground max-w-md max-h-[80vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-primary neon-glow text-center">
-              ⚡Инструкция для правильной работы⚡
-            </DialogTitle>
-          </DialogHeader>
-          <div className="space-y-4 text-foreground/90 text-base leading-relaxed">
-            <p className="flex items-start gap-2">
-              <span className="text-xl">🚀</span>
-              <span><strong>1.</strong> Регистрируем совершенно новый аккаунт.</span>
-            </p>
-            <p className="flex items-start gap-2">
-              <span className="text-xl">🔥</span>
-              <span><strong>2.</strong> Вам дают бесплатный бонус виде 50 рублей, и вводим по желанию сверху промокод.</span>
-            </p>
-            <p className="flex items-start gap-2">
-              <span className="text-xl">👑</span>
-              <span><strong>3.</strong> Дальше пополняем баланс на любую сумму при желании, можно играть и на бонус но в этом случае казино будет вас сливать.</span>
-            </p>
-            <p className="flex items-start gap-2">
-              <span className="text-xl">🌟</span>
-              <span><strong>4.</strong> Заходим в игру Tower Rush и ставим 2 раза ставку это нужно чтобы казино увидел что вы не бот.</span>
-            </p>
-            <p className="flex items-start gap-2">
-              <span className="text-xl">🎰</span>
-              <span><strong>5.</strong> Дальше заходим в игру CRASH X и нажимаем получить VIP сигнал👑</span>
-            </p>
+        {currentSlide === 2 && (
+          <div className="space-y-6 animate-fade-in">
+            <Card className="bg-zinc-900/50 backdrop-blur border-2 border-primary/30 neon-border p-8">
+              <h2 className="text-2xl font-bold text-primary neon-glow text-center mb-6">
+                👑 VIP Сигнал
+              </h2>
+              <div className="py-8 text-center">
+                <div className="text-8xl font-black text-primary neon-glow animate-pulse">
+                  {coefficient}x
+                </div>
+                <p className="mt-6 text-foreground/70 text-lg">Используйте этот коэффициент в игре CRASH X</p>
+              </div>
+            </Card>
+
+            <Button
+              onClick={() => setCurrentSlide(1)}
+              className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-xl py-8 neon-button transition-all"
+            >
+              ← Вернуться
+            </Button>
           </div>
-        </DialogContent>
-      </Dialog>
+        )}
+      </div>
 
       <Dialog open={showInfo} onOpenChange={setShowInfo}>
         <DialogContent className="bg-zinc-900 border-2 border-primary/50 text-foreground max-w-md">
@@ -214,22 +224,6 @@ const Index = () => {
               <span className="text-xl">🎰</span>
               <span>Удачных ставок.</span>
             </p>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      <Dialog open={showSignal} onOpenChange={setShowSignal}>
-        <DialogContent className="bg-zinc-900 border-2 border-primary/50 text-foreground max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-primary neon-glow text-center">
-              👑 VIP Сигнал
-            </DialogTitle>
-          </DialogHeader>
-          <div className="py-8 text-center">
-            <div className="text-7xl font-black text-primary neon-glow animate-pulse">
-              {coefficient}x
-            </div>
-            <p className="mt-6 text-foreground/70 text-lg">Используйте этот коэффициент в игре CRASH X</p>
           </div>
         </DialogContent>
       </Dialog>
